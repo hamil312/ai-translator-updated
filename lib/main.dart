@@ -35,7 +35,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
   final TextEditingController _textController = TextEditingController();
   bool _isLoading = false;
   String language = 'ingles';
-  String _englishText = '';
+  String _translatedText = '';
   final _formKey = GlobalKey<FormState>();
 
   Future<String> translateText(String textValue) async {
@@ -83,7 +83,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
     if (_formKey.currentState!.validate()) {
       String result = await translateText(_textController.text);
       setState(() {
-        _englishText = result;
+        _translatedText = result;
       });
     }
   }
@@ -182,12 +182,12 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
                   ),
                   child: SingleChildScrollView(
                     child: Text(
-                      _englishText.isEmpty
+                      _translatedText.isEmpty
                           ? 'La traducción aparecerá aquí'
-                          : _englishText,
+                          : _translatedText,
                       style: TextStyle(
                         color:
-                            _englishText.isEmpty ? Colors.grey : Colors.black,
+                            _translatedText.isEmpty ? Colors.grey : Colors.black,
                       ),
                     ),
                   ),
